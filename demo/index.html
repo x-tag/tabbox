@@ -3,20 +3,34 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Stub Demo - X-Tag</title>
+    <title>Tabs Demo - X-Tag</title>
     <link rel="stylesheet" type="text/css" href="x-tag-components.css"/>
-	<link rel="stylesheet" type="text/css" href="../src/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../src/main.css"/>
 
     <script type="text/javascript" src="x-tag-components.js"></script> 
-    <script type="text/javascript" src="../src/main.js"></script>      
-	<style>
-
-	</style>
+    <script type="text/javascript" src="../src/main.js"></script> 
+    
+    <style>
+      x-tabbox {
+        height: 400px;
+      }
+    </style>
 </head>
-
+  
 <body>
 
-	<h2>Create a Demo</h2>
+	<x-tabbox tab-position="top" selected-index="0" transition>
+    <menu>
+      <button>Foo</button>
+      <button>Bar</button>
+      <button>Zaz</button>
+    </menu>
+    <ul>
+      <li>Foo Panel<br/>...more Foo Panel content</li>
+      <li>Bar Panel</li>
+      <li>Zaz Panel</li>
+    </ul>
+  </x-tabbox>
 
 
 </body>
