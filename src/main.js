@@ -12,7 +12,7 @@
     if (index != tabbox.selectedIndex) tabbox.selectedIndex = index;
     if (!rules[index]) {
       rules[index] = 1;
-      var transform = 'transform: translateY(' + (index * -100) + '%);';
+      var transform = 'transform: translateX(' + (index * -100) + '%);';
       sheet.insertRule('x-tabbox[selected-index="' + index + '"] > ul > li:nth-child(' + (index + 1) + '){ opacity: 1; z-index: 1; ' + xtag.prefix.css + transform + transform + '}', sheet.cssRules.length);
     }
     var panel = xtag.queryChildren(tabbox, 'ul > *')[index];
