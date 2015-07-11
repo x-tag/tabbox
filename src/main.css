@@ -1,8 +1,8 @@
 
 x-tabbox {
-  display: -webkit-box; 
-  display: -moz-box;    
-  display: -ms-flexbox; 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
@@ -11,9 +11,9 @@ x-tabbox {
 }
 
 x-tabbox > menu {
-  display: -webkit-box; 
-  display: -moz-box;    
-  display: -ms-flexbox; 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   margin: 0;
@@ -43,9 +43,9 @@ x-tabbox > menu > [selected] {
 }
 
 x-tabbox > ul {
-  display: -webkit-box; 
-  display: -moz-box;    
-  display: -ms-flexbox; 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   margin: 0;
@@ -66,6 +66,7 @@ x-tabbox > ul > li {
   min-width: 100%;
   opacity: 0;
   z-index: 0;
+  overflow: auto;
 }
 
 x-tabbox[transition] > ul > li {
