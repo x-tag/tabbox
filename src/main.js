@@ -1,9 +1,9 @@
-(function(){  
-  
+(function(){
+
   var rules = {};
   var sheet = document.head.appendChild(document.createElement('style')).sheet;
-  
-  function selectTab(tabbox, tab){ 
+
+  function selectTab(tabbox, tab){
     xtag.queryChildren(tabbox, 'menu > [selected], ul > [selected]').forEach(function(node){
       node.removeAttribute('selected');
     });
@@ -13,16 +13,16 @@
     if (!rules[index]) {
       rules[index] = 1;
       var transform = 'transform: translateX(' + (index * -100) + '%);';
-      sheet.insertRule('x-tabbox[selected-index="' + index + '"] > ul > li:nth-child(' + (index + 1) + '){ opacity: 1; z-index: 1; ' + xtag.prefix.css + transform + transform + '}', sheet.cssRules.length);
+      sheet.insertRule('x-tabbox[selected-index="' + index + '"] > ul > li:nth-of-type(' + (index + 1) + '){ opacity: 1; z-index: 1; ' + xtag.prefix.css + transform + transform + '}', sheet.cssRules.length);
     }
-    var panel = xtag.queryChildren(tabbox, 'ul > *')[index];
+    var panel = xtag.queryChildren(tabbox, 'ul > li')[index];
     if (panel) panel.setAttribute('selected', '');
   };
 
   function selectEvent(e){
     if (this.parentNode && this.parentNode.parentNode == e.currentTarget) selectTab(e.currentTarget, this);
   };
-  
+
   function createAccessor(selector){
     return {
       get: function(){
@@ -30,7 +30,7 @@
       }
     }
   };
-  
+
   xtag.register('x-tabbox', {
     events: {
       'tap:delegate(menu > *)': selectEvent,
@@ -46,7 +46,7 @@
         get: function(){
           return xtag.queryChildren(this, 'ul');
         }
-      }, 
+      },
       selectedIndex: {
         attribute: {
           validate: function(val){
@@ -60,8 +60,8 @@
         }
       },
       selectedTab: createAccessor('menu > [selected]'),
-      selectedPanel: createAccessor('ul > [selected]') 
+      selectedPanel: createAccessor('ul > [selected]')
     }
   });
-  
+
 })();
