@@ -20,7 +20,12 @@
     var panel = xtag.queryChildren(tabbox, 'ul > li')[index];
     if (panel) panel.setAttribute('selected', '');
     if (fireSelected) xtag.fireEvent(tabbox, 'tabselected', {
-      detail: { tab: previous[0], panel: previous[1] }
+      detail: {
+        currentTab: tab,
+        currentPanel: panel,
+        previousTab: previous[0],
+        previousPanel: previous[1]
+      }
     })
   };
 
