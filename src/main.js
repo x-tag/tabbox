@@ -4,6 +4,7 @@
   var sheet = document.head.appendChild(document.createElement('style')).sheet;
 
   function selectTab(tabbox, tab){
+    var fireEvent = tab && tab.hasAttribute('selected');
     xtag.queryChildren(tabbox, 'menu > [selected], ul > [selected]').forEach(function(node){
       node.removeAttribute('selected');
     });
@@ -17,6 +18,9 @@
     }
     var panel = xtag.queryChildren(tabbox, 'ul > li')[index];
     if (panel) panel.setAttribute('selected', '');
+    if (fireEvent) xtag.fireEvent(tabbox, 'tabselected', {
+      detail: { tab: tab, panel: panel }
+    })
   };
 
   function selectEvent(e){
@@ -33,8 +37,8 @@
 
   xtag.register('x-tabbox', {
     events: {
-      'tap:delegate(menu > *)': selectEvent,
-      'keydown:delegate(menu > *):keypass(13, 32)': selectEvent
+      'tap:delegate(x-tabbox > menu > *)': selectEvent,
+      'keydown:delegate(x-tabbox > menu > *):keypass(13, 32)': selectEvent
     },
     accessors: {
       tabElements: {
