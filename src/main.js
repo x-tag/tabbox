@@ -4,8 +4,9 @@
   var sheet = document.head.appendChild(document.createElement('style')).sheet;
 
   function selectTab(tabbox, tab){
-    var fireEvent = tab && tab.hasAttribute('selected');
+    var previous = [], fireSelected = tab && !tab.hasAttribute('selected');
     xtag.queryChildren(tabbox, 'menu > [selected], ul > [selected]').forEach(function(node){
+      previous.push(node);
       node.removeAttribute('selected');
     });
     tab.setAttribute('selected', '');
@@ -18,8 +19,8 @@
     }
     var panel = xtag.queryChildren(tabbox, 'ul > li')[index];
     if (panel) panel.setAttribute('selected', '');
-    if (fireEvent) xtag.fireEvent(tabbox, 'tabselected', {
-      detail: { tab: tab, panel: panel }
+    if (fireSelected) xtag.fireEvent(tabbox, 'tabselected', {
+      detail: { tab: previous[0], panel: previous[1] }
     })
   };
 
