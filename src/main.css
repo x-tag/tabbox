@@ -32,6 +32,7 @@ x-tabbox > menu > * {
   padding: 0;
   background: #eee;
   border: none;
+  font-family: inherit;
   cursor: pointer;
   -webkit-flex: 1;
   -ms-flex: 1;
