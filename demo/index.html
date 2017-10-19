@@ -7,32 +7,39 @@
     <link rel="stylesheet" type="text/css" href="x-tag-components.css"/>
     <link rel="stylesheet" type="text/css" href="../src/main.css"/>
 
-    <script type="text/javascript" src="x-tag-components.js"></script> 
+    <script type="text/javascript" src="custom-elements.min.js"></script> 
+    <script type="text/javascript" src="core.js"></script> 
     <script type="text/javascript" src="../src/main.js"></script> 
     
     <style>
       x-tabbox {
         height: 400px;
       }
+	  x-tabbox > x-display > x-display.activeclass{
+	    position:absolute;
+		opacity: 1;
+		z-index: 2;
+		color: black;
+	  }
+	  x-tabbox > x-display > x-display.hiddenclass{
+	    position:absolute;
+		opacity: 0;
+	  }
     </style>
 </head>
-  
 <body>
-
-	<x-tabbox tab-position="top" selected-index="0" transition>
-    <menu>
-      <button>Foo</button>
-      <button>Bar</button>
-      <button>Zaz</button>
-    </menu>
-    <ul>
-      <li>Foo Panel<br/>...more Foo Panel content</li>
-      <li>Bar Panel</li>
-      <li>Zaz Panel</li>
-    </ul>
-  </x-tabbox>
-
-
+	<x-tabbox type="tabbox/header" tab-position="top" transition>
+		<x-menu  type="tabbox/menu">
+			<x-toggle target-display="~x-display(id=foo-panel);" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" target-status="visible">Foo</x-toggle>
+			<x-toggle target-display="#bar-panel;" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" toggle-set="demo" target-status="hidden">Bar</x-toggle>
+			<x-toggle target-display="~x-display(type=unique/display);" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" target-status="hidden">Zaz</x-toggle>
+		</x-menu>
+		<x-display type="tabbox/display">
+			<x-display class="activeclass" id="foo-panel" type="tabbox/display">Foo Panel<br/>...more Foo Panel content</x-display>
+			<x-display class="hiddenclass" id="bar-panel" type="tabbox/display">Bar Panel<br/>...more Bar Panel content</x-display>
+			<x-display class="hiddenclass" id="zaz-panel" type="unique/display">Zaz Panel<br/>...more Zaz Panel content</x-display>
+		</x-display>
+	</x-tabbox>
 </body>
 
 </html>
