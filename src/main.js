@@ -26,9 +26,10 @@ function silly(attr, node){
 			r.value = attr.match(sillyValue)[0];
 			r.value = r.value.replace("\=","");
 			for(var i=0; i<n.length; i++){ if(n[i].hasAttribute(r.attr) && n[i].getAttribute(r.attr) === r.value){ return n[i]; } }
-			return null; };
-	// SORT BEHAVIOR
-	sillyParser.test(attr) === true ? ( _r = sillier(attr, node) ) : null;
+			return null; 
+		};
+	
+	/[\w+\-]\=.+/g.test(attr) === true ? (  _r = sillier(attr, node) ) : null;
 	/\d+/g.test(attr) === true ? ( _r = node[attr.match(/\d+/g)] ) : null;
 	return _r; }
 
@@ -77,8 +78,8 @@ const toggleSet = xtag.pseudos.toggleSet = {
 			for(var key=0; key<doc.length; key++){
 				if(doc[key].toggleSet === e.toggleSet) { 
 					if( e !== doc[key] ) {
-						doc[key].targetStatus = "hidden"; 
 						doc[key].removeAttribute("selected");
+						doc[key].targetStatus = "hidden"; 
 						doc[key].xtag.toggle[doc[key].name].target.className = doc[key].hiddenClass; 
 					}
 				}
