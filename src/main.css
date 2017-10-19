@@ -36,6 +36,8 @@ x-tabbox > x-menu > * {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  border: 1px solid rgb(255,200,200);
+  text-align: center;
 }
 
 x-tabbox > x-menu > [selected] {
@@ -61,7 +63,7 @@ x-tabbox > x-display {
   order: 1;
 }
 
-x-tabbox > x-display > x-display {
+x-tabbox > x-display > x-item {
   position: relative;
   min-width: 100%;
   opacity: 0;
@@ -69,7 +71,7 @@ x-tabbox > x-display > x-display {
   overflow: auto;
 }
 
-x-tabbox[transition] > x-display > x-display {
+x-tabbox[transition] > x-display > x-item {
   -webkit-transition: ease opacity 0.3s;
   -ms-transition: ease opacity 0.3s;
   transition: ease opacity 0.3s;

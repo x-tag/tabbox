@@ -78,6 +78,7 @@ const toggleSet = xtag.pseudos.toggleSet = {
 				if(doc[key].toggleSet === e.toggleSet) { 
 					if( e !== doc[key] ) {
 						doc[key].targetStatus = "hidden"; 
+						doc[key].removeAttribute("selected");
 						doc[key].xtag.toggle[doc[key].name].target.className = doc[key].hiddenClass; 
 					}
 				}
@@ -100,7 +101,6 @@ const toggle = xtag.extensions.toggle = {
 			this.xtag.toggle ? this.xtag.toggle.length++ : this.xtag.toggle = { length: count+=1 };
 			this.name = this.nodeName.toLowerCase() + this.xtag.toggle.length;
 			this.xtag.toggle[this.name] = { target: this.targetDisplay.collectDOM() };
-			this.targetDisplay.collectDOM();
 		}
 		get 'name::attr'(){
 			return this.getAttribute("name");
@@ -133,10 +133,16 @@ const toggle = xtag.extensions.toggle = {
 			return ac;
 		}
 		get 'hiddenClass::attr'(){
-			return this.getAttribute("hidden-class")|| "memory";
+			return this.getAttribute("hidden-class") || "memory";
 		}
 		set 'hiddenClass::attr'(hc){
 			return hc;
+		}
+		get 'selected::attr'(){
+			return this.getAttribute("selected");
+		}
+		set 'selected::attr'(hc=""){
+			return "";
 		}
 	}
 };
@@ -148,12 +154,17 @@ const toggle = xtag.extensions.toggle = {
 ***** */
 const xtabbox = xtag.create("x-tabbox", class extends XTagElement {
 	connectedCallback(){
+		this.setStartTab();
+		if(this.type!==false){  }
+		if(this.resizer!==false){  }
+		if(this.tabboxGroup!==false){  }
+		if(this.tabPosition!==false){  }
 	}
 	set 'type::attr'(val){
 		return val;
 	}
 	get 'type::attr'(){
-		return this.getAttribute("type");
+		return this.getAttribute("type")||false;
 	}
  	set 'resizer::attr'(val){
 		return val;
@@ -161,9 +172,24 @@ const xtabbox = xtag.create("x-tabbox", class extends XTagElement {
  	get 'resizer::attr'(){
 		return val;
 	}
+ 	set 'tabPosition::attr'(tp){
+		return tp;
+	}
+ 	get 'itemsDraggable::attr'(){
+		return this.getAttribute("items-draggable") || false;
+	}
+ 	set 'itemsDraggable::attr'(tbg){
+		return tbg;
+	}
+ 	get 'tabPosition::attr'(){
+		return this.getAttribute("tab-position");;
+	}
 	'resize::template'(){
 	}
 	setType(type){
+	}
+	setStartTab(){
+		
 	}
 } );
 
@@ -174,7 +200,16 @@ const xtabbox = xtag.create("x-tabbox", class extends XTagElement {
 ***** */
 const xdisplay = xtag.create("x-display", class extends XTagElement {
 
-} )
+} );
+
+/* ***** IS: CUSTOM-ELMENT[X-ITEM]
+  ** FOR: DOCUMENT[BODY]
+  ** DESCRIPTION: 
+    * A CUSTOM ELEMENT MADE FOR DISPLAYING
+***** */
+const xitem = xtag.create("x-item", class extends XTagElement {
+
+} );
 
 /* ***** IS: CUSTOM-ELMENT[X-TOGGLE]
   ** FOR: DOCUMENT[BODY]
@@ -187,7 +222,7 @@ const xtoggle = xtag.create("x-toggle", class extends XTagElement.extensions("to
 	}
 	'toggle::event:toggleSet'(e){
 		var docu = this.xtag.toggle.active;
-		if(this.targetStatus === "hidden") { docu.className = this.activeClass; this.targetStatus = "visible"; }
+		if(this.targetStatus === "hidden") { docu.className = this.activeClass; this.selected = ""; this.targetStatus = "visible"; }
 		else if(this.targetStatus === "visible") { docu.className = this.hiddenClass; this.targetStatus = "hidden"; };
 	}
 	'toggleOver::event'(e){
@@ -196,4 +231,3 @@ const xtoggle = xtag.create("x-toggle", class extends XTagElement.extensions("to
 } );
 
 })();
-

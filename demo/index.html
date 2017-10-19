@@ -15,29 +15,33 @@
       x-tabbox {
         height: 400px;
       }
-	  x-tabbox > x-display > x-display.activeclass{
+	  x-tabbox > x-display > x-item.activeclass{
 	    position:absolute;
 		opacity: 1;
 		z-index: 2;
 		color: black;
+		text-align:center;
+		font-size: 1.5vw;
 	  }
-	  x-tabbox > x-display > x-display.hiddenclass{
+	  x-tabbox > x-display > x-item.hiddenclass{
 	    position:absolute;
 		opacity: 0;
+		text-align:center;
+		font-size: 1.5vw;
 	  }
     </style>
 </head>
 <body>
 	<x-tabbox type="tabbox/header" tab-position="top" transition>
 		<x-menu  type="tabbox/menu">
-			<x-toggle target-display="~x-display(id=foo-panel);" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" target-status="visible">Foo</x-toggle>
+			<x-toggle target-display="~x-item(id=foo-panel);" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" target-status="visible" selected>Foo</x-toggle>
 			<x-toggle target-display="#bar-panel;" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" toggle-set="demo" target-status="hidden">Bar</x-toggle>
-			<x-toggle target-display="~x-display(type=unique/display);" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" target-status="hidden">Zaz</x-toggle>
+			<x-toggle target-display="~x-item(type=unique/display);" active-class="activeclass" hidden-class="hiddenclass" toggle-set="demo" target-status="hidden">Zaz</x-toggle>
 		</x-menu>
 		<x-display type="tabbox/display">
-			<x-display class="activeclass" id="foo-panel" type="tabbox/display">Foo Panel<br/>...more Foo Panel content</x-display>
-			<x-display class="hiddenclass" id="bar-panel" type="tabbox/display">Bar Panel<br/>...more Bar Panel content</x-display>
-			<x-display class="hiddenclass" id="zaz-panel" type="unique/display">Zaz Panel<br/>...more Zaz Panel content</x-display>
+			<x-item class="activeclass" id="foo-panel" type="tabbox/display">Foo Panel<br/>...more Foo Panel content</x-item>
+			<x-item class="hiddenclass" id="bar-panel" type="tabbox/display">Bar Panel<br/>...more Bar Panel content</x-item>
+			<x-item class="hiddenclass" id="zaz-panel" type="unique/display">Zaz Panel<br/>...more Zaz Panel content</x-item>
 		</x-display>
 	</x-tabbox>
 </body>
