@@ -1,4 +1,3 @@
-
 x-tabbox {
   display: -webkit-box;
   display: -moz-box;
@@ -10,7 +9,7 @@ x-tabbox {
   flex-direction: column;
 }
 
-x-tabbox > menu {
+x-tabbox > x-menu {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -27,7 +26,7 @@ x-tabbox > menu {
   order: 0;
 }
 
-x-tabbox > menu > * {
+x-tabbox > x-menu > * {
   margin: 0;
   padding: 0;
   background: #eee;
@@ -37,13 +36,15 @@ x-tabbox > menu > * {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  border: 1px solid rgb(255,200,200);
+  text-align: center;
 }
 
-x-tabbox > menu > [selected] {
+x-tabbox > x-menu > [selected] {
   background: #f8f8f8;
 }
 
-x-tabbox > ul {
+x-tabbox > x-display {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -62,7 +63,7 @@ x-tabbox > ul {
   order: 1;
 }
 
-x-tabbox > ul > li {
+x-tabbox > x-display > x-item {
   position: relative;
   min-width: 100%;
   opacity: 0;
@@ -70,7 +71,7 @@ x-tabbox > ul > li {
   overflow: auto;
 }
 
-x-tabbox[transition] > ul > li {
+x-tabbox[transition] > x-display > x-item {
   -webkit-transition: ease opacity 0.3s;
   -ms-transition: ease opacity 0.3s;
   transition: ease opacity 0.3s;
@@ -83,15 +84,15 @@ x-tabbox[tab-position="right"] {
   flex-direction: row;
 }
 
-x-tabbox[tab-position="left"] > menu,
-x-tabbox[tab-position="right"] > menu {
+x-tabbox[tab-position="left"] > x-menu,
+x-tabbox[tab-position="right"] > x-menu {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-x-tabbox[tab-position="right"] > menu,
-x-tabbox[tab-position="bottom"] > menu {
+x-tabbox[tab-position="right"] > x-menu,
+x-tabbox[tab-position="bottom"] > x-menu {
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -100,13 +101,13 @@ x-tabbox[tab-position="bottom"] > menu {
   order: 1;
 }
 
-x-tabbox[tab-position="left"] > menu > *,
-x-tabbox[tab-position="right"] > menu > * {
+x-tabbox[tab-position="left"] > x-menu > *,
+x-tabbox[tab-position="right"] > x-menu > * {
   display: block;
 }
 
-x-tabbox[tab-position="right"] > ul,
-x-tabbox[tab-position="bottom"] > ul {
+x-tabbox[tab-position="right"] > x-display,
+x-tabbox[tab-position="bottom"] > x-display {
   -webkit-order: 0;
   -ms-flex-order: 0;
   order: 0;
