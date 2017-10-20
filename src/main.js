@@ -148,7 +148,24 @@ const toggle = xtag.extensions.toggle = {
     * A CUSTOM ELEMENT MADE FOR TOGGLING TAB BOX DISPLAYS
 ***** */
 const xtabbox = xtag.create("x-tabbox", class extends XTagElement {
-	
+	connectedCallback(){
+	}
+	set 'type::attr'(val){
+		return val;
+	}
+	get 'type::attr'(val){
+		return this.getAttribute("type");
+	}
+ 	set 'resizer::attr'(val){
+		return val;
+	}
+ 	get 'resizer::attr'(){
+		return val;
+	}
+	'resize::template'(){
+	}
+	setType(type){
+	}
 } );
 
 /* ***** IS: CUSTOM-ELMENT[X-DISPLAY]
