@@ -153,7 +153,7 @@ const xtabbox = xtag.create("x-tabbox", class extends XTagElement {
 	set 'type::attr'(val){
 		return val;
 	}
-	get 'type::attr'(val){
+	get 'type::attr'(){
 		return this.getAttribute("type");
 	}
  	set 'resizer::attr'(val){
