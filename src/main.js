@@ -79,7 +79,6 @@ const toggleSet = xtag.pseudos.toggleSet = {
 					if( e !== doc[key] ) {
 						doc[key].targetStatus = "hidden"; 
 						doc[key].xtag.toggle[doc[key].name].target.className = doc[key].hiddenClass; 
-						console.log( doc[key] ); 
 					}
 				}
 			}
